@@ -1,33 +1,16 @@
 import requests
 import sinch
-import os
 #SDK
-PROJECT_ID = "f251b7ce-6490-497e-b8bc-1bed1be1bd66"
-APP_ID = "f106fefb-99ea-427f-a271-7649d4fc4089"
-SECRET = "xL98gM2F.wyTEoejCzeh_PflLc"
-FROM_NUMBER = "447520651202"
-TO_NUMBER = "923477229072"
-#REST API-----------------------------------------
-SERVICE_PLAN_ID = "2ef7e427a6e748a3b6f8b7c638dde6ab"
-API_TOKEN = os.environ.get("AUTH_TOKEN")
-payload = {
-    "from": FROM_NUMBER,
-    "to": [
-        TO_NUMBER
-    ],
-    "body": "Hello how are you"
-}
-
-headers = {
-    "Content-Type": "application/json",
-    "Authorization": "Bearer " + API_TOKEN
-}
-#REST API-----------------------------------------
-API_KEY_OPENWEATHER = "94662b46ddf115fcc031345ff3d275f3"
+PROJECT_ID = "your project id"
+APP_ID = "your app id"
+SECRET = "your secret key"
+FROM_NUMBER = "your sinch number here"
+TO_NUMBER = "your number here"
+API_KEY_OPENWEATHER = "your open weather api key"
 openweather_3hr_interval_Endpoint = "https://api.openweathermap.org/data/2.5/forecast"
 openweather_parameters = {
-    "lat": 24.857428,
-    "lon": 67.068766,
+    "lat": "integer value of your latitude here",
+    "lon": "integer value of your longitude here,
     "appid": API_KEY_OPENWEATHER,
     "units": "metric",
     "cnt": 8
@@ -44,7 +27,6 @@ for data in weather_data["list"]:
             date = data["dt_txt"].split(" ")[0]
             message_string = f"We predict {weather_description} at {time} on {date}"
             client = sinch.SinchClient(project_id=PROJECT_ID, key_id=APP_ID, key_secret=SECRET)
-            payload["body"] = message_string  #REST API
             batch_response = client.sms.batches.send(body=message_string, to=[TO_NUMBER], from_=FROM_NUMBER,
                                                      delivery_report="none")
             print(batch_response)
