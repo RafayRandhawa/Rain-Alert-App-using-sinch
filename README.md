@@ -1,4 +1,4 @@
-You can get your own open weather API key bygoinf onto https://openweathermap.org/ and signing up for a free account, from there you will need to proceed to their API section.
+You can get your own open weather API key by going onto https://openweathermap.org/ and signing up for a free account, from there you will need to proceed to their API section.
 You can get your own latitude and longitude coordinates from https://www.latlong.net/.
 For easily viewing and understanding the format of the json data recieved you can paste your json data here: https://jsonviewer.stack.hu/.
 For being able to use sinch you will need to go to sinch and sign up for a account. The account can be free or paid depending on your needs.
